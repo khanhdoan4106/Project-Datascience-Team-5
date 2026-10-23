@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Chạy lại toàn bộ phần Link Analysis từ đầu.
-# Cần matches.csv và features.csv (Người 2, data/clean/) đặt cùng thư mục này, hoặc truyền đường dẫn:
+# Cần matches.csv và features.csv (khâu Tích hợp dữ liệu, data/clean/) đặt cùng thư mục này, hoặc truyền đường dẫn:
 #   bash run_all.sh path/to/matches.csv path/to/features.csv
 set -euo pipefail
 MATCHES=${1:-matches.csv}

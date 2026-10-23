@@ -20,4 +20,4 @@ Mỗi dòng ứng với một trận trong `matches.csv` và được ghép bằ
 - Giá trị thiếu (NaN) xuất hiện khi một trong hai đội chưa đá trận nào trong cửa sổ 3 năm, ví dụ đội mới lên hạng sau thời gian dài vắng mặt, hoặc khi hai đội chưa có đối thủ chung. Mô hình cây xử lý được NaN trực tiếp; với mô hình tuyến tính, nên điền trung vị.
 - PageRank trung bình trong file khoảng 1,17 chứ không phải 1. Lý do là chuẩn hóa tính trên mọi đội có trong cửa sổ 3 năm, gồm cả các đội đã xuống hạng và thường yếu hơn.
 - Các cột `gr_pagerank_home`, `gr_pagerank_away`, `gr_common_opp_n` và `gr_h2h_weight` dùng để tham chiếu. Phần đánh giá chỉ dùng 5 cột: `gr_pagerank_log_ratio`, `gr_common_opp_diff`, `gr_trans2_diff`, `gr_h2h_share` và `gr_h2h_gd`.
-- Tương quan với `elo_diff`: đối thủ chung 0,94, bắc cầu 0,86, đối đầu 0,69, PageRank 0,65. `gr_h2h_share` tương quan 0,85 với `h2h_home_points` của Người 2.
+- Tương quan với `elo_diff`: đối thủ chung 0,94, bắc cầu 0,86, đối đầu 0,69, PageRank 0,65. `gr_h2h_share` tương quan 0,85 với `h2h_home_points` trong `features.csv`.

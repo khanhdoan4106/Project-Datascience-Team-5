@@ -1,4 +1,4 @@
-"""Bước 1 – Dựng đồ thị đội bóng và tính đặc trưng đồ thị cho từng trận (Người 5, Link Analysis).
+"""Bước 1 – Dựng đồ thị đội bóng và tính đặc trưng đồ thị cho từng trận (khâu Link Analysis).
 
 Đồ thị: nút = CLB; cạnh = trận đấu. Trận h (nhà) gặp a (khách) có "phần điểm" của đội nhà
     s = 0,5 + 0,5 × clip(hiệu số bàn thắng, −3, 3) / 3      (thắng 1-0 → 0,67; thắng từ 3 bàn → 1; hòa → 0,5)
@@ -154,7 +154,7 @@ def selftest(played, targets, full, n_dates=6, seed=0):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dataset", required=True, help="matches.csv của Người 2 (cần cột match_id, season, date, home_team, away_team, status, home_goals, away_goals)")
+    ap.add_argument("--dataset", required=True, help="matches.csv của khâu Tích hợp dữ liệu (cần cột match_id, season, date, home_team, away_team, status, home_goals, away_goals)")
     ap.add_argument("--out", default="graph_features.csv")
     ap.add_argument("--selftest", action="store_true")
     args = ap.parse_args()

@@ -14,9 +14,9 @@ features.csv ──────────────────────�
 
 ## Bước 0. Dữ liệu đầu vào
 
-**Làm gì.** Bước này đọc `matches.csv` của Người 2 (9.850 trận, 2000/01–2026/27, 46 CLB) và chỉ giữ các trận đã đá (`status == "played"`).
+**Làm gì.** Bước này đọc `matches.csv` của khâu Tích hợp & chuẩn bị dữ liệu (9.850 trận, 2000/01–2026/27, 46 CLB) và chỉ giữ các trận đã đá (`status == "played"`).
 
-**Vì sao.** File đã gộp nhiều nguồn, chuẩn hóa tên CLB và có `match_id`, nên đặc trưng đồ thị ghép được 1-1 với `features.csv`. Dữ liệu thô của Người 1 có tên CLB chưa thống nhất giữa các nguồn, nên không dùng.
+**Vì sao.** File đã gộp nhiều nguồn, chuẩn hóa tên CLB và có `match_id`, nên đặc trưng đồ thị ghép được 1-1 với `features.csv`. Dữ liệu thô của khâu Thu thập có tên CLB chưa thống nhất giữa các nguồn, nên không dùng.
 
 **Cột cần:** `match_id, season, date, home_team, away_team, status, home_goals, away_goals`.
 
@@ -184,7 +184,7 @@ Kết quả: mật độ 0,77; 3 cộng đồng với modularity 0,04 (cấu tr�
 **Vì sao.**
 - Chia ngẫu nhiên sẽ cho mô hình "nhìn thấy" tương lai.
 - So với baseline mạnh nhất của nhóm mới cho kết luận đáng tin. Thêm đặc trưng vào một mô hình yếu thì gần như luôn trông có ích.
-- Log loss đo chất lượng xác suất, mà xác suất là thứ dashboard của Người 6 sẽ hiển thị.
+- Log loss đo chất lượng xác suất, mà xác suất là thứ dashboard của khâu Trực quan hóa sẽ hiển thị.
 
 ```python
 roll = [(df.season < s, df.season == s) for s in seasons if s >= "2010/11"]

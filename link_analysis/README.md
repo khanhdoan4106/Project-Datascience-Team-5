@@ -1,8 +1,8 @@
-# Link Analysis – Người 5
+# Link Analysis – Đồ thị đội bóng và đặc trưng mạng lưới
 
 Phần Link Analysis của dự án **Football Match Outcome Prediction** (Nhóm 5). Phần này biểu diễn các CLB Premier League thành đồ thị và phân tích mạng lưới đối đầu. Từ đồ thị, nó tạo ra đặc trưng chỉ dùng thông tin có trước trận đấu, rồi kiểm tra xem các đặc trưng đó có giúp dự đoán kết quả tốt hơn không.
 
-**Kết luận chính:** PageRank là thước đo sức mạnh hợp lý: tương quan hạng Spearman với bảng xếp hạng cuối mùa trung bình 0,937. Tuy vậy, thêm đặc trưng đồ thị vào bộ 85 đặc trưng của nhóm **không cải thiện dự đoán**. Chênh lệch log loss là +0,0011 với khoảng tin cậy 95% [−0,0008, +0,0029], chứa 0. Nguyên nhân là các đặc trưng này trùng thông tin với Elo. Người 7 không bắt buộc phải dùng chúng.
+**Kết luận chính:** PageRank là thước đo sức mạnh hợp lý: tương quan hạng Spearman với bảng xếp hạng cuối mùa trung bình 0,937. Tuy vậy, thêm đặc trưng đồ thị vào bộ 85 đặc trưng của nhóm **không cải thiện dự đoán**. Chênh lệch log loss là +0,0011 với khoảng tin cậy 95% [−0,0008, +0,0029], chứa 0. Nguyên nhân là các đặc trưng này trùng thông tin với Elo. Khâu Xây dựng mô hình không bắt buộc phải dùng chúng.
 
 ## Cấu trúc thư mục
 
@@ -21,8 +21,8 @@ link_analysis/
 ├── test_graph_features.py       kiểm thử công thức, rò rỉ dữ liệu, toàn vẹn đầu ra
 ├── docs/
 │   ├── METHODOLOGY.md           giải thích từng bước kèm mã
-│   ├── FEATURES_DICTIONARY.md   ý nghĩa 9 cột gr_* (cho Người 7, 9)
-│   └── DATA_ISSUES.md           vấn đề dữ liệu cần báo Người 1, 2
+│   ├── FEATURES_DICTIONARY.md   ý nghĩa 9 cột gr_* (cho khâu Xây dựng mô hình, Tích hợp & báo cáo)
+│   └── DATA_ISSUES.md           vấn đề dữ liệu cần báo khâu Thu thập, Tích hợp dữ liệu
 └── results/
     ├── graph_features_matches.csv   SẢN PHẨM CHÍNH: 9.850 dòng, khóa match_id
     ├── node_metrics_by_season.csv   PageRank, điểm, hạng của từng CLB theo mùa
@@ -41,7 +41,7 @@ link_analysis/
 
 ```bash
 pip install -r requirements.txt
-# matches.csv và features.csv lấy từ Người 2 (data/clean/, sinh bởi run_prepare.py trên nhánh Data_itegration)
+# matches.csv và features.csv lấy từ khâu Tích hợp & chuẩn bị dữ liệu (data/clean/, sinh bởi run_prepare.py trên nhánh Data_itegration)
 bash run_all.sh path/to/matches.csv path/to/features.csv
 ```
 
@@ -57,7 +57,7 @@ Từng bước riêng:
 | `python evaluate_on_matches.py --matches matches.csv --graph results/graph_features_matches.csv` | 3–5 phút | so với Elo, kèo nhà cái |
 | `python test_graph_features.py` (hoặc `pytest`) | ~1 phút | 5 kiểm thử, cần `matches.csv` trong thư mục |
 
-## Dùng đặc trưng đồ thị (Người 7, 9)
+## Dùng đặc trưng đồ thị (khâu Xây dựng mô hình, Tích hợp & báo cáo)
 
 ```python
 import pandas as pd
@@ -66,7 +66,7 @@ graph = pd.read_csv("link_analysis/results/graph_features_matches.csv")
 df = features.merge(graph.filter(regex="^(match_id|gr_)"), on="match_id", how="left", validate="1:1")
 ```
 
-Năm cột nên thử là `gr_pagerank_log_ratio`, `gr_common_opp_diff`, `gr_trans2_diff`, `gr_h2h_share` và `gr_h2h_gd`. Ý nghĩa từng cột có trong `docs/FEATURES_DICTIONARY.md`. Khi Người 2 cập nhật dữ liệu, cần chạy lại Bước 1.
+Năm cột nên thử là `gr_pagerank_log_ratio`, `gr_common_opp_diff`, `gr_trans2_diff`, `gr_h2h_share` và `gr_h2h_gd`. Ý nghĩa từng cột có trong `docs/FEATURES_DICTIONARY.md`. Khi khâu Tích hợp & chuẩn bị dữ liệu cập nhật dữ liệu, cần chạy lại Bước 1.
 
 ## Kết quả đã kiểm chứng (23/10/2026)
 
