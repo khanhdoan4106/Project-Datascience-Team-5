@@ -1,0 +1,6 @@
+Logistic Regression, rolling 2010/11 -> 2025/26, n = 6080 trận
+  elo_diff (Standard)          log loss 0.9808
+  85 đặc trưng (Standard)      log loss 1.1558
+  85 đặc trưng (Quantile)      log loss 1.0195
+  85 + đồ thị (Quantile)       log loss 1.0200
+  Chênh lệch (đồ thị - không): +0.0005, KTC 95% [-0.0003, +0.0013]
