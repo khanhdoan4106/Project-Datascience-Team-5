@@ -1,0 +1,8 @@
+Logistic Regression, kiểm thử 2018/19 – 2025/26
+  StandardScaler, 85 đặc trưng           log loss 1.2654
+  bỏ rest_days                           log loss 1.2646
+  bỏ diff_* và elo_home_win_prob         log loss 1.2705
+  bỏ cả hai nhóm                         log loss 1.2654
+  QuantileTransformer                    log loss 0.9995
+  cắt phân vị 1–99% + StandardScaler     log loss 0.9801
+  chỉ elo_diff                           log loss 0.9780
